@@ -1,3 +1,9 @@
+"""
+1. Add two numbers
+2. Find element in a dropdown
+3. Submit
+"""
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import time

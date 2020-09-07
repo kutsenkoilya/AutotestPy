@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun 30 10:48:29 2020
-
-@author: kompich
+"Wait for the best proce" = Explicit wait
 """
 
 from selenium.webdriver.common.by import By
@@ -43,7 +41,5 @@ try:
     submit_button.click()
     
 finally:
-    # ожидание чтобы визуально оценить результаты прохождения скрипта
     time.sleep(10)
-    # закрываем браузер после всех манипуляций
     browser.quit()

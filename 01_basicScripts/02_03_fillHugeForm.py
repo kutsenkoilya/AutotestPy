@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun  4 18:47:06 2020
 
-@author: kompich
+"""
+1. Fill a huge form
+2. Submit
 """
 
 from selenium import webdriver
@@ -21,9 +20,5 @@ try:
     button.click()
 
 finally:
-    # успеваем скопировать код за 30 секунд
     time.sleep(30)
-    # закрываем браузер после всех манипуляций
     browser.quit()
-
-# не забываем оставить пустую строку в конце файла

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Jun 30 10:48:29 2020
-
-@author: kompich
+1. Fill form
+2. Attach file
+3. Submit
 """
 
 from selenium import webdriver
@@ -34,7 +33,5 @@ try:
     button.click()
 
 finally:
-    # ожидание чтобы визуально оценить результаты прохождения скрипта
     time.sleep(10)
-    # закрываем браузер после всех манипуляций
     browser.quit()

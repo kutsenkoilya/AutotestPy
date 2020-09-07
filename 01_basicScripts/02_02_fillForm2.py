@@ -1,19 +1,24 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May 27 19:19:14 2020
 
-@author: kompich
 """
+1. Find x
+2. Calculate equation
+3. Fill form
+4. Submit
+"""
+
 
 from selenium import webdriver
 import time 
-
-link = "http://suninjuly.github.io/simple_form_find_task.html"
+import math
+link = "http://suninjuly.github.io/find_link_text"
 
 try:
     browser = webdriver.Chrome()
     browser.get(link)
 
+    link2 = browser.find_element_by_link_text(str(math.ceil(math.pow(math.pi, math.e)*10000)))
+    link2.click()
+    
     input1 = browser.find_element_by_tag_name('input')
     input1.send_keys("Ivan")
     input2 = browser.find_element_by_name('last_name')
@@ -24,6 +29,7 @@ try:
     input4.send_keys("Russia")
     button = browser.find_element_by_css_selector("button.btn")
     button.click()
+    
 
 finally:
     # успеваем скопировать код за 30 секунд
@@ -31,4 +37,10 @@ finally:
     # закрываем браузер после всех манипуляций
     browser.quit()
 
-# не забываем оставить пустую строку в конце файла
+
+
+
+
+
+
+

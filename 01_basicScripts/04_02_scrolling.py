@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Jun 30 10:26:40 2020
-
-@author: kompich
+Scrolling
 """
 
 from selenium import webdriver

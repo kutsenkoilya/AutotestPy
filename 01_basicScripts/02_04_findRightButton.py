@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
-Created on Thu Jun  4 18:56:24 2020
-
-@author: kompich
+1. Fill a huge form
+2. Find correct Submit button by XPath
+3. Submit
 """
 
 
@@ -22,9 +21,5 @@ try:
     button.click()
 
 finally:
-    # успеваем скопировать код за 30 секунд
     time.sleep(30)
-    # закрываем браузер после всех манипуляций
     browser.quit()
-
-# не забываем оставить пустую строку в конце файла
