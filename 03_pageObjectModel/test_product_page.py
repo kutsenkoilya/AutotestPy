@@ -2,9 +2,12 @@
 Run as :
 pytest -s -v --tb=line --language=en test_product_page.py
 
+pytest -s -v -m user_can
+
 """
+
 import pytest
-import time`
+import time
 
 from pages.product_page import ProductPage
 from pages.login_page import LoginPage
@@ -13,25 +16,25 @@ from pages.main_page import MainPage
 @pytest.mark.user_can
 class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function", autouse=True)
-    def setup(self):
+    def setup(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
-        page = MainPage(browser, link)   # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
-        page.open()                      # открываем страницу
-        page.go_to_login_page()          # выполняем метод страницы - переходим на страницу логина
+        page = MainPage(browser, link)
+        page.open()
+        page.go_to_login_page()
         login_page = LoginPage(browser, browser.current_url)
         login_page.register_new_user(str(time.time()) + "@fakemail.org",'Qwerty1@Qwerty1@')
         login_page.should_be_authorized_user()
 
     @pytest.mark.parametrize('page_url', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/",
                                         "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/"])
-    def test_user_can_add_product_to_basket(browser,page_url):
+    def test_user_can_add_product_to_basket(self,browser,page_url):
         page = ProductPage(browser, page_url)
         page.open()
         page.add_to_the_basket()
         page.check_book_name_is_correct()
         page.check_basket_total_is_correct()
 
-    def test_user_cant_see_success_message(browser):
+    def test_user_cant_see_success_message(self,browser):
         link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
         page = ProductPage(browser, link)
         page.open()
