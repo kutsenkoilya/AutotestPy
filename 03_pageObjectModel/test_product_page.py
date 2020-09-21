@@ -4,6 +4,7 @@ pytest -s -v --tb=line --language=en test_product_page.py
 
 """
 import pytest
+import time`
 
 from pages.product_page import ProductPage
 from pages.login_page import LoginPage
@@ -18,11 +19,8 @@ class TestUserAddToBasketFromProductPage:
         page.open()                      # открываем страницу
         page.go_to_login_page()          # выполняем метод страницы - переходим на страницу логина
         login_page = LoginPage(browser, browser.current_url)
-        login_page.register_new_user('test@mail.com','Qwerty1@Qwerty1@')
+        login_page.register_new_user(str(time.time()) + "@fakemail.org",'Qwerty1@Qwerty1@')
         login_page.should_be_authorized_user()
-
-        yield
-
 
     @pytest.mark.parametrize('page_url', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/",
                                         "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/"])
