@@ -3,7 +3,7 @@
 Run as :
 pytest -v --tb=line --language=en test_main_page.py
 pytest -v --tb=line -m login_guest test_main_page.py
-
+pytest -s -v --tb=line -m basket test_main_page.py
 """
 import pytest
 from pages.main_page import MainPage
@@ -25,3 +25,9 @@ class TestLoginFromMainPage():
         page.open()
         page.should_be_login_link()
 
+    @pytest.mark.basket
+    def test_guest_cant_see_product_in_basket_opened_from_main_page(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/"
+        page = MainPage(browser, link)
+        page.go_to_basket_page()
+        
