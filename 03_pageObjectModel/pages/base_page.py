@@ -30,8 +30,14 @@ class BasePage():
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                  " probably unauthorised user"
 
+    def is_basket_button_exist_1(self):
+        assert self.is_element_present(*BasePageLocators.BASKET_BUTTON), "Basket button doesn't exist 1"
+    def is_basket_button_exist_2(self):
+        assert self.is_element_present(*BasePageLocators.BASKET_BUTTON_2), "Basket button doesn't exist 2"
+
     def go_to_basket_page(self):
-        print(self.browser.find_element(*BasePageLocators.BASKET_LINK))
+        basket_button = self.browser.find_element(*BasePageLocators.BASKET_BUTTON_2)
+        basket_button.click()
 
     # Element presence
     def is_element_present(self, how, what):

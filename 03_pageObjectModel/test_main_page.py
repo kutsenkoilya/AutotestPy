@@ -8,6 +8,7 @@ pytest -s -v --tb=line -m basket test_main_page.py
 import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
+from pages.basket_page import BasketPage
 
 @pytest.mark.login_guest
 class TestLoginFromMainPage():
@@ -29,5 +30,25 @@ class TestLoginFromMainPage():
     def test_guest_cant_see_product_in_basket_opened_from_main_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
         page = MainPage(browser, link)
+        page.open()
         page.go_to_basket_page()
+        basket_page = BasketPage(browser, browser.current_url)
+        basket_page.basket_is_empty()
+        basket_page.basket_contains_empty_message()
+
+"""
+    @pytest.mark.basket
+    def test_guest_basket_button_exist_on_main_page_1(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/"
+        page = MainPage(browser, link)
+        page.open()
+        page.is_basket_button_exist_1()
+
+    @pytest.mark.basket
+    def test_guest_basket_button_exist_on_main_page_2(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/"
+        page = MainPage(browser, link)
+        page.open()
+        page.is_basket_button_exist_2()
+"""
         
